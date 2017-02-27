@@ -12,7 +12,7 @@
     $password = 'root';
     $DB = new PDO($server, $username, $password);
 
-    class CategoryTag extends PHPUnit_Framework_TestCase
+    class TagTest extends PHPUnit_Framework_TestCase
     {
         protected function tearDown()
         {
@@ -33,7 +33,6 @@
         {
             $name = "Thailand";
             $new_tag = new Tag($name);
-            var_dump($new_tag);
             $new_tag->save();
             $result = Tag::getAll();
 
