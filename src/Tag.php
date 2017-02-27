@@ -48,5 +48,17 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM tags;");
         }
+        static function find($search_id)
+        {
+            $returned_tags = Tag::getAll();
+            foreach($returned_tags as $tag) {
+                if ($search_id == $tag->getId()){
+                    return $tag;
+                }
+            }
+            return null;
+        }
+
+
     }
 ?>

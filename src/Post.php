@@ -55,5 +55,16 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM posts;");
         }
+
+        static function find($search_id)
+        {
+            $returned_posts = Post::getAll();
+            foreach($returned_posts as $post) {
+                if ($search_id == $post->getId()){
+                    return $post;
+                }
+            }
+            return null;
+        }
     }
  ?>

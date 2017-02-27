@@ -52,6 +52,24 @@
 
             $this->assertEquals([], $result);
         }
+
+        function test_find()
+        {
+            $title = "Thailand";
+            $date = '1999-11-11';
+            $new_post = new Post($title, $date, null);
+            $new_post->save();
+
+            $title2 = "Zimbabwe";
+            $date = '1999-11-11';
+            $new_post2 = new Post($title2, $date, null);
+            $new_post2->save();
+
+
+            $result = Post::find($new_post2->getId());
+
+            $this->assertEquals($new_post2, $result);
+        }
     }
 
 ?>
