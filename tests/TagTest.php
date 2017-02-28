@@ -101,6 +101,22 @@
 
             $this->assertEquals(null, $result);
         }
+        // AddPost Not tested or written yet
+        function test_addPost()
+        {
+            $name = "Thailand";
+            $date = 1976-09-12;
+            $new_tag = new Tag($name, $date, null);
+            $new_tag->save();
+
+            $name2 = "Zimbabwe";
+            $new_tag2 = new Tag($name2);
+            $new_tag2->save();
+
+            $new_tag2->addPost($new_tag);
+
+            $this->assertEquals(null, $result);
+        }
     }
 
 ?>
