@@ -91,6 +91,45 @@
 
             $this->assertEquals($new_post2->getTitle(), $result);
         }
+        function test_updateDate()
+        {
+            $title = "Thailand";
+            $date = '1999-11-11';
+            $new_post = new Post($title, $date, null);
+            $new_post->save();
+
+            $title2 = "Zimbabwe";
+            $date = '2016-11-11';
+            $new_post2 = new Post($title2, $date, null);
+            $new_post2->save();
+            $new_date = "1923-11-09";
+            $new_post2->updateDate($new_date);
+
+
+            $search_db_for = Post::find($new_post2->getId());
+            $result = $search_db_for->getDate();
+
+            $this->assertEquals($new_post2->getDate(), $result);
+        }
+        
+        function test_delete()
+        {
+            $title = "Thailand";
+            $date = '1999-11-11';
+            $new_post = new Post($title, $date, null);
+            $new_post->save();
+
+            $title2 = "Zimbabwe";
+            $date = '2016-11-11';
+            $new_post2 = new Post($title2, $date, null);
+            $new_post2->save();
+            $new_post2->delete();
+
+
+            $result = Post::find($new_post2->getId());
+
+            $this->assertEquals(null, $result);
+        }
     }
 
 ?>

@@ -51,10 +51,6 @@
             return $posts;
         }
 
-        static function deleteAll()
-        {
-            $GLOBALS['DB']->exec("DELETE FROM posts;");
-        }
 
         static function find($search_id)
         {
@@ -71,6 +67,20 @@
         {
             $GLOBALS['DB']->exec("UPDATE posts SET title = '{$new_title}' WHERE id = {$this->getId()};");
             $this->setTitle($new_title);
+        }
+        function updateDate($new_date)
+        {
+            $GLOBALS['DB']->exec("UPDATE posts SET date = '{$new_date}' WHERE id = {$this->getId()};");
+            $this->setDate($new_date);
+        }
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM posts;");
+        }
+
+        function delete()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM posts WHERE id = {$this->getId()};");
         }
     }
  ?>

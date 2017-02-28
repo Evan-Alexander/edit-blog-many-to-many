@@ -84,6 +84,23 @@
 
             $this->assertEquals($new_tag2->getName(), $result);
         }
+
+        function test_delete()
+        {
+            $name = "Thailand";
+            $new_tag = new Tag($name);
+            $new_tag->save();
+
+            $name2 = "Zimbabwe";
+            $new_tag2 = new Tag($name2);
+            $new_tag2->save();
+            $new_tag2->delete();
+
+
+            $result = Tag::find($new_tag2->getId());
+
+            $this->assertEquals(null, $result);
+        }
     }
 
 ?>
