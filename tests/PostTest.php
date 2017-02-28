@@ -70,6 +70,27 @@
 
             $this->assertEquals($new_post2, $result);
         }
+
+        function test_updateTitle()
+        {
+            $title = "Thailand";
+            $date = '1999-11-11';
+            $new_post = new Post($title, $date, null);
+            $new_post->save();
+
+            $title2 = "Zimbabwe";
+            $date = '2016-11-11';
+            $new_post2 = new Post($title2, $date, null);
+            $new_post2->save();
+            $new_title = "Paris";
+            $new_post2->updateTitle($new_title);
+
+
+            $search_db_for = Post::find($new_post2->getId());
+            $result = $search_db_for->getTitle();
+
+            $this->assertEquals($new_post2->getTitle(), $result);
+        }
     }
 
 ?>

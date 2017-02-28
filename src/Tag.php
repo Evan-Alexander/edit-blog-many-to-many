@@ -59,6 +59,12 @@
             return null;
         }
 
+        function updateName($new_name)
+        {
+            $GLOBALS['DB']->exec("UPDATE tags SET tag_name = '{$new_name}' WHERE id = {$this->getId()};");
+            $this->setName($new_name);
+        }
+
 
     }
 ?>

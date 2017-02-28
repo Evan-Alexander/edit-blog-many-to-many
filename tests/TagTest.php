@@ -65,6 +65,25 @@
 
             $this->assertEquals($new_tag2, $result);
         }
+
+        function test_updateName()
+        {
+            $name = "Thailand";
+            $new_tag = new Tag($name);
+            $new_tag->save();
+
+            $name2 = "Zimbabwe";
+            $new_tag2 = new Tag($name2);
+            $new_tag2->save();
+            $new_name = "Ohio";
+            $new_tag2->updateName($new_name);
+
+
+            $get_from_db = Tag::find($new_tag2->getId());
+            $result = $get_from_db->getName();
+
+            $this->assertEquals($new_tag2->getName(), $result);
+        }
     }
 
 ?>

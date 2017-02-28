@@ -66,5 +66,11 @@
             }
             return null;
         }
+
+        function updateTitle($new_title)
+        {
+            $GLOBALS['DB']->exec("UPDATE posts SET title = '{$new_title}' WHERE id = {$this->getId()};");
+            $this->setTitle($new_title);
+        }
     }
  ?>
